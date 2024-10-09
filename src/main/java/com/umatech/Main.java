@@ -1,5 +1,5 @@
 package com.umatech;
-import com.umatech.TomcatApplication.AutoScan.TomcatApplication;
+import com.umatech.TomcatApplication.annotation.TomcatApplication;
 import com.umatech.TomcatApplication.TomcatApplicationRunner;
 
 @TomcatApplication

@@ -1,7 +1,7 @@
 package com.umatech.Controller;
 
-import com.umatech.TomcatApplication.AutoScan.RequestMapping;
-import com.umatech.TomcatApplication.AutoScan.RestController;
+import com.umatech.TomcatApplication.annotation.RequestMapping;
+import com.umatech.TomcatApplication.annotation.RestController;
 
 @RestController("/controller")
 public class HelloController {
