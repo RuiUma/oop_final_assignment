@@ -16,7 +16,7 @@ public class ClassScanner {
     private Reflections reflections;
 
     public ClassScanner(String packageName) {
-        // 创建 Reflections 配置，指定要扫描的包
+
         reflections = new Reflections(
                 new ConfigurationBuilder()
                         .setUrls(ClasspathHelper.forPackage(packageName))
@@ -26,7 +26,7 @@ public class ClassScanner {
     }
 
     public Set<Class<?>> getClassesWithAnnotation(Class<?> annotation) {
-        // 查找带有特定注解的类
+
         return reflections.getTypesAnnotatedWith((Class<? extends Annotation>) annotation);
     }
 }

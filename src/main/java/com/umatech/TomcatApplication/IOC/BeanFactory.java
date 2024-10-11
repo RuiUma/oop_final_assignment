@@ -1,5 +1,6 @@
 package com.umatech.TomcatApplication.IOC;
 import com.umatech.TomcatApplication.TomcatApplicationRunner;
+import com.umatech.TomcatApplication.annotation.Component;
 import com.umatech.TomcatApplication.annotation.RestController;
 import com.umatech.TomcatApplication.annotation.Service;
 import org.apache.logging.log4j.LogManager;
@@ -19,23 +20,27 @@ public class BeanFactory {
     public void init(String packageName) throws Exception {
         ClassScanner scanner = new ClassScanner(packageName);
 
-        // 获取带有 @Controller 注解的类
         Set<Class<?>> controllerClasses = scanner.getClassesWithAnnotation(RestController.class);
 
-        // 获取带有 @Service 注解的类
         Set<Class<?>> serviceClasses = scanner.getClassesWithAnnotation(Service.class);
 
-        // 实例化并存储 Controller 类
+        Set<Class<?>> componentClasses = scanner.getClassesWithAnnotation(Component.class);
+
         for (Class<?> clazz : controllerClasses) {
             Object instance = clazz.getDeclaredConstructor().newInstance();
             beanMap.put(clazz, instance);
         }
 
-        // 实例化并存储 Service 类
         for (Class<?> clazz : serviceClasses) {
             Object instance = clazz.getDeclaredConstructor().newInstance();
             beanMap.put(clazz, instance);
         }
+
+        for (Class<?> clazz : componentClasses) {
+            Object instance = clazz.getDeclaredConstructor().newInstance();
+            beanMap.put(clazz, instance);
+        }
+
     }
 
     public Object getBean(Class<?> clazz) {
