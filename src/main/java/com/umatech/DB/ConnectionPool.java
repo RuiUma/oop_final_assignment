@@ -18,7 +18,6 @@ public class ConnectionPool {
         this.password = password;
         this.maxConnections = maxConnections;
 
-        // 创建初始连接并放入连接池
         for (int i = 0; i < initialConnections; i++) {
             connectionPool.add(createNewConnection());
         }
